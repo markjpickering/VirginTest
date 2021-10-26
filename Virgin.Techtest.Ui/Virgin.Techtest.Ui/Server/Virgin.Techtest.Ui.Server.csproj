@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="5.0.11" />
+    <PackageReference Include="System.Runtime" Version="4.3.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Virgin.Techtest.Data\Virgin.Techtest.Data.csproj" />
+    <ProjectReference Include="..\..\..\Virgin.Techtest.Domain\Virgin.Techtest.Domain.csproj" />
+    <ProjectReference Include="..\..\..\Virgin.Techtest.Mappers\Virgin.Techtest.Mappers.csproj" />
+    <ProjectReference Include="..\Client\Virgin.Techtest.Ui.Client.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Data\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Data\ExerciseData.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+
+</Project>

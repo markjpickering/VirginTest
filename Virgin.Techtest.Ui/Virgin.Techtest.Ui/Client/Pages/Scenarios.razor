@@ -1,0 +1,53 @@
+﻿@page "/"
+@using Virgin.Techtest.Domain.Model
+@inject HttpClient Http
+
+<h1>Scenarios</h1>
+
+
+@if (scenarios == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Scenario Name(s)</th>
+                <th>Surname</th>
+                <th>Forename</th>
+                <th>Total # Months</th>
+                <th>Market Id</th>
+                <th>Network Layer Id</th>
+                <th>Creation Date</th>
+                <th>Sample Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var scenario in scenarios)
+            {
+            <tr>
+                <td>@scenario.Name</td>
+                <td>@scenario.Surname</td>
+                <td>@scenario.Forename</td>
+                <td>@scenario.NumMonths</td>
+                <td>@scenario.MarketID</td>
+                <td>@scenario.NetworkLayerID</td>
+                <td>@scenario.CreationDate</td>
+                <td>@scenario.SampleDate</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private ScenarioEntity[] scenarios;
+
+    protected override async Task OnInitializedAsync()
+    {
+        scenarios = await Http.GetFromJsonAsync<ScenarioEntity[]>("Scenario");
+    }
+
+}
